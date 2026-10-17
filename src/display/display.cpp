@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "display.h"
 
-void displayPrintCenter(Adafruit_SH1107 &display, String text, int yValue, bool autoCenter) {
+void displayPrintCenter(Adafruit_GFX &display, String text, int yValue, bool autoCenter) {
   short int textX;
   short int textY;
   unsigned short int textWidth;
@@ -20,14 +20,14 @@ void displayPrintCenter(Adafruit_SH1107 &display, String text, int yValue, bool 
   display.print(text);
 }
 
-void drawTitle(Adafruit_SH1107 &display, char *text) {
+void drawTitle(Adafruit_GFX &display, char *text) {
   display.setTextSize(1);
-  display.setTextColor(SH110X_WHITE);
+  display.setTextColor(1);
 
   displayPrintCenter(display, text, 6, true);
 }
 
-void drawUISignifiers(Adafruit_SH1107 &display, char leftChar, char rightChar, char okChar) {
+void drawUISignifiers(Adafruit_GFX &display, char leftChar, char rightChar, char okChar) {
   display.setTextSize(1);
   display.setCursor(0, (SCREEN_HEIGHT / 2) - 5);
   display.print(leftChar);
@@ -40,11 +40,11 @@ void drawUISignifiers(Adafruit_SH1107 &display, char leftChar, char rightChar, c
   displayPrintCenter(display, okStr, SCREEN_HEIGHT - 6, true);
 }
 
-void drawArrows(Adafruit_SH1107 &display) {
+void drawArrows(Adafruit_GFX &display) {
   drawUISignifiers(display, '<', '>', 'V');
 }
 
-void drawPlusMinus(Adafruit_SH1107 &display) {
+void drawPlusMinus(Adafruit_GFX &display) {
   drawUISignifiers(display, '-', '+', 'V');
 }
 
